@@ -52,8 +52,8 @@ fun IU(miViewModel: MyViewModel) {
             painter = painterResource(R.drawable.balaidos),
             contentDescription = "icono",
             modifier = Modifier
-                .size(210.dp)
-                .offset(y = 120.dp)
+                .size(275.dp)
+                .offset(y = 80.dp)
                 .offset(x = 70.dp)
         )
 
@@ -211,9 +211,15 @@ fun Login(miViewModel: MyViewModel) {
 
     Column {
         // Texto que simula un botón (Clicks) y cuenta cuántas veces se pulsa
-        TextButton(onClick = { miViewModel.contador() }) {
-            Text("Aficionados en Balaidos: ${miViewModel.getContador()}")
-        }
+            Text( // Línea de texto donde aparece la lista de números aleatorios después de pulsar el botón
+                text = "Aficionados en Balaidos: ${miViewModel.getContador()}", // Llama al método que devuelve la lista de números aleatorios
+                fontWeight = FontWeight.Light,
+                modifier = Modifier
+                    .offset(y = 10.dp)
+                    .offset(x = 80.dp)
+            )
+
+
 
         // Caja de texto para escribir
         OutlinedTextField(
