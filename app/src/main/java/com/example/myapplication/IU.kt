@@ -93,92 +93,76 @@ fun IU(miViewModel: MyViewModel) {
 @Composable
 fun juegoSimon(miViewModel: MyViewModel) {
 
-    Box{
+    Box {
         // Cuadro de suma de rondas
-        if(miViewModel.getContador()<10){
-            Text("Ronda: ${miViewModel.getContador()}",
-                modifier = Modifier.offset(y=400.dp, x= 250.dp))
-        }else{
-            Text("Ronda: ${miViewModel.getContador()}",
-                modifier = Modifier.offset(y=400.dp, x= 250.dp), fontSize = 24.sp)
+        if (miViewModel.getContador() < 10) {
+            Text(
+                "Estamos en la Ronda: ${miViewModel.getContador()}",
+                modifier = Modifier.offset(y = 400.dp, x = 50.dp),
+                fontSize = 24.sp
+            )
+        } else {
+            Text(
+                "Estamos en la Ronda: ${miViewModel.getContador()}",
+                modifier = Modifier.offset(y = 400.dp, x = 50.dp),
+                fontSize = 24.sp
+            )
         }
 
-
-        Button( //Botón azul
+        Button( // Botón azul
             onClick = {},
             modifier = Modifier
                 .offset(y = 470.dp)
                 .offset(x = 100.dp)
-                .size(40.dp)
+                .size(65.dp) // Aumenta el tamaño del botón azul
                 .background(color = Color.Blue)
-
-
-        ){
-
+        ) {
         }
 
-        Button( //Botón verde
+        Button( // Botón verde
             onClick = {},
             modifier = Modifier
                 .offset(y = 470.dp)
                 .offset(x = 200.dp)
-                .size(40.dp)
+                .size(65.dp) // Aumenta el tamaño del botón verde
                 .background(color = Color.Green)
-
-
-
-        ){
-
+        ) {
         }
-        Button( //Botón rojo
+
+        Button( // Botón rojo
             onClick = {},
             modifier = Modifier
                 .offset(y = 530.dp)
                 .offset(x = 100.dp)
-                .size(40.dp)
+                .size(65.dp) // Aumenta el tamaño del botón rojo
                 .background(color = Color.Red)
-
-
-        ){
-
+        ) {
         }
 
-        Button( //Botón amarillo
+        Button( // Botón amarillo
             onClick = {},
             modifier = Modifier
                 .offset(y = 530.dp)
                 .offset(x = 200.dp)
-                .size(40.dp)
+                .size(65.dp) // Aumenta el tamaño del botón amarillo
                 .background(color = Color.Yellow)
-
-
-
-        ){
-
+        ) {
         }
 
-
-
-        Button( //Botón PLAY
-            onClick = {miViewModel.contador()},
+        Button( // Botón PLAY
+            onClick = { miViewModel.contador() },
             modifier = Modifier
                 .size(80.dp, 40.dp)
                 .offset(y = 610.dp)
                 .offset(x = 200.dp)
-
-
-
-
-        ){
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.escudocelta),
-                contentDescription = "Play",
-                modifier = Modifier
-                    .size(100.dp)
-
+                contentDescription = "Juguemos",
+                modifier = Modifier.size(100.dp)
             )
-
         }
+
         startReset()
     }
 }
@@ -199,7 +183,7 @@ fun startReset() {
     ) {
         Text(
             text = if (isStart) "START" else "RESET", // Cambia el texto del botón
-            style = TextStyle (fontSize = 10.sp)
+            style = TextStyle(fontSize = 10.sp)
         )
     }
 
@@ -217,7 +201,9 @@ fun Login(miViewModel: MyViewModel) {
 
         // Texto que simula un botón (Clicks) y cuenta cuantas veces lo pulsas
         TextButton(onClick = { miViewModel.contador() }) {
-            Text("CLICKS: ${miViewModel.getContador()}")
+            Text("Aficionados en Balaidos: ${miViewModel.getContador()}")
+
+
         }
 
         // Caja de texto para escribir
@@ -240,52 +226,6 @@ fun Login(miViewModel: MyViewModel) {
     }
 }
 
-/* ESTO NO LO USO
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    // var msj_saludo = stringResource(id = R.string.saludo)
-    // var name = remember {mutableStateOf("")}
-
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.End
-    ) {
-        Box {
-            Image(
-                painter = painterResource(R.drawable.naturaleza),
-                contentDescription = "icono",
-                modifier = Modifier
-                    .size(200.dp)
-            )
-        }
-        Column {
-            Text(
-                text = "Hola $name",
-                fontSize = 50.sp,
-                color = Color.Blue,
-                modifier = modifier
-            )
-            Text(
-                text = stringResource(R.string.saludo),
-                fontSize = 20.sp,
-                color = Color.Gray,
-                modifier = modifier
-
-            )
-
-            Button(onClick = { Log.d("Calcular", "Click!!!") }) {
-                Text(text = "Click me!", color = Color.DarkGray)
-            }
-        }
-
-    }
-
-}
-*/
-
-/**
- * Vista previa de la app
- */
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
@@ -295,7 +235,7 @@ fun GreetingPreview() {
 }
 
 /*
-//ESTO NO LO USAMOS, es un ejemplo
+*De un anterior examen
 @Composable
 fun InterfazUsuario() {
     login()
