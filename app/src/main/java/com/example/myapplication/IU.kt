@@ -57,7 +57,7 @@ fun IU(miViewModel: MyViewModel) {
         )
         Text( //Línea de texto donde aparece la lista de numero aleatorios después de pulsar el botón
 
-            text = "Numeros: ${miViewModel.getListaRandom()}",// Llama al método que me devuelve la lista de números aleatorios
+            text = "Número Carnet Socio: ${miViewModel.getListaRandom()}",// Llama al método que me devuelve la lista de números aleatorios
             fontWeight = FontWeight.Light,
             modifier = Modifier
                 .offset(y = 300.dp)
@@ -86,12 +86,12 @@ fun IU(miViewModel: MyViewModel) {
 
     }
     Login(miViewModel)
-    juegoSimon(miViewModel)
+    SimonSais(miViewModel)
 
 }
 
 @Composable
-fun juegoSimon(miViewModel: MyViewModel) {
+fun SimonSais(miViewModel: MyViewModel) {
 
     Box {
         // Cuadro de suma de rondas
@@ -202,6 +202,7 @@ fun Login(miViewModel: MyViewModel) {
         // Texto que simula un botón (Clicks) y cuenta cuantas veces lo pulsas
         TextButton(onClick = { miViewModel.contador() }) {
             Text("Aficionados en Balaidos: ${miViewModel.getContador()}")
+
 
 
         }
