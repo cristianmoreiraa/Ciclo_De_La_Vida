@@ -227,7 +227,7 @@ fun Login(miViewModel: MyViewModel) {
             onValueChange = {
                 miViewModel.name.value = it
             },
-            label = { Text(text = "Escribe:") }
+            label = { Text(text = "Escribe: ") }
         )
 
         // Condición para mostrar el contenido de la caja solo si se escriben más de 3 caracteres
