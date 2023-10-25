@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,15 +38,16 @@ import com.example.myapplication.MyViewModel
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 /**
- * miViewModel es una instancia de MyViewModel, el cual (miViewModel) se pasará como argumento cuando
- * llamemos a la función IU.
+ * Composable que representa la interfaz principal de la aplicación.
+ * Toma un ViewModel como argumento para gestionar la lógica de la aplicación.
  */
 @Composable
 fun IU(miViewModel: MyViewModel) {
 
     Box (
         modifier = Modifier.fillMaxSize()
-    ){
+    ) {
+        // Imagen en la parte superior de la pantalla
         Image(
             painter = painterResource(R.drawable.balaidos),
             contentDescription = "icono",
@@ -53,25 +55,21 @@ fun IU(miViewModel: MyViewModel) {
                 .size(210.dp)
                 .offset(y = 120.dp)
                 .offset(x = 70.dp)
-
         )
-        Text( //Línea de texto donde aparece la lista de numero aleatorios después de pulsar el botón
 
-            text = "Número Carnet Socio: ${miViewModel.getListaRandom()}",// Llama al método que me devuelve la lista de números aleatorios
+        Text( // Línea de texto donde aparece la lista de números aleatorios después de pulsar el botón
+            text = "Número Carnet Socio: ${miViewModel.getListaRandom()}", // Llama al método que devuelve la lista de números aleatorios
             fontWeight = FontWeight.Light,
             modifier = Modifier
                 .offset(y = 300.dp)
                 .offset(x = 30.dp)
-
-
         )
-        Button( //Botón para generar la lista de números aleatorios
+
+        Button( // Botón para generar la lista de números aleatorios
             onClick = { miViewModel.crearRandom() },
             modifier = Modifier
                 .offset(y = 330.dp)
                 .offset(x = 40.dp)
-
-
         ) {// Elementos del botón (imagen y texto)
             Image(
                 painter = painterResource(id = R.drawable.escudocelta),
@@ -79,15 +77,14 @@ fun IU(miViewModel: MyViewModel) {
                 modifier = Modifier
                     .padding(8.dp)
                     .size(20.dp)
-
             )
-            Text(text = "Click para generar números")
+            Text(text = "Click para generar socios")
         }
-
     }
+
+    // Llama a la función Login y SimonSais para mostrar más contenido en la interfaz
     Login(miViewModel)
     SimonSais(miViewModel)
-
 }
 
 @Composable
@@ -109,24 +106,32 @@ fun SimonSais(miViewModel: MyViewModel) {
             )
         }
 
+        // Botones de colores
         Button( // Botón azul
             onClick = {},
             modifier = Modifier
-                .offset(y = 470.dp)
+                .offset(y = 450.dp)
                 .offset(x = 100.dp)
-                .size(65.dp) // Aumenta el tamaño del botón azul
+                .size(75.dp) // Aumenta el tamaño del botón azul
                 .background(color = Color.Blue)
-        ) {
+        ) {Text(
+            text = "Azul",
+            style = TextStyle(fontSize = 10.sp) // Ajusta el tamaño de la fuente a 14.sp o el valor que desees
+        )
         }
 
         Button( // Botón verde
             onClick = {},
             modifier = Modifier
-                .offset(y = 470.dp)
+                .offset(y = 450.dp)
                 .offset(x = 200.dp)
-                .size(65.dp) // Aumenta el tamaño del botón verde
+                .size(75.dp) // Aumenta el tamaño del botón verde
                 .background(color = Color.Green)
         ) {
+            Text(
+                text = "Verde",
+                style = TextStyle(fontSize = 10.sp) // Ajusta el tamaño de la fuente a 14.sp o el valor que desees
+            )
         }
 
         Button( // Botón rojo
@@ -134,9 +139,12 @@ fun SimonSais(miViewModel: MyViewModel) {
             modifier = Modifier
                 .offset(y = 530.dp)
                 .offset(x = 100.dp)
-                .size(65.dp) // Aumenta el tamaño del botón rojo
+                .size(75.dp) // Aumenta el tamaño del botón rojo
                 .background(color = Color.Red)
-        ) {
+        ) {Text(
+            text = "Rojo",
+            style = TextStyle(fontSize = 10.sp) // Ajusta el tamaño de la fuente a 14.sp o el valor que desees
+        )
         }
 
         Button( // Botón amarillo
@@ -144,25 +152,30 @@ fun SimonSais(miViewModel: MyViewModel) {
             modifier = Modifier
                 .offset(y = 530.dp)
                 .offset(x = 200.dp)
-                .size(65.dp) // Aumenta el tamaño del botón amarillo
+                .size(75.dp) // Aumenta el tamaño del botón amarillo
                 .background(color = Color.Yellow)
-        ) {
+        ) {Text(
+            text = "Amarillo",
+            style = TextStyle(fontSize = 10.sp) // Ajusta el tamaño de la fuente a 14.sp o el valor que desees
+        )
         }
 
         Button( // Botón PLAY
             onClick = { miViewModel.contador() },
             modifier = Modifier
-                .size(80.dp, 40.dp)
+                .size(100.dp, 40.dp)
                 .offset(y = 610.dp)
                 .offset(x = 200.dp)
         ) {
             Image(
                 painter = painterResource(id = R.drawable.escudocelta),
                 contentDescription = "Juguemos",
-                modifier = Modifier.size(100.dp)
+                modifier = Modifier
+                    .size(100.dp,200.dp)
             )
         }
 
+        // Llama a la función startReset para mostrar el botón de inicio o reinicio
         startReset()
     }
 }
@@ -183,28 +196,23 @@ fun startReset() {
     ) {
         Text(
             text = if (isStart) "START" else "RESET", // Cambia el texto del botón
-            style = TextStyle(fontSize = 10.sp)
+            style = TextStyle(fontSize = 10.sp),
+
         )
     }
-
 }
 
-
 /**
- * Función del contador de clicks y de escribir texto en la caja
+ * Función que muestra el contador de clicks y una caja de texto para escribir.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Login(miViewModel: MyViewModel) {
 
     Column {
-
-        // Texto que simula un botón (Clicks) y cuenta cuantas veces lo pulsas
+        // Texto que simula un botón (Clicks) y cuenta cuántas veces se pulsa
         TextButton(onClick = { miViewModel.contador() }) {
             Text("Aficionados en Balaidos: ${miViewModel.getContador()}")
-
-
-
         }
 
         // Caja de texto para escribir
@@ -216,14 +224,13 @@ fun Login(miViewModel: MyViewModel) {
             label = { Text(text = "Escribe:") }
         )
 
-        // Condición para que solo me muestre el contenido de la caja si escribo más de 3 caracteres
+        // Condición para mostrar el contenido de la caja solo si se escriben más de 3 caracteres
         if (miViewModel.name.value.length > 3) {
             Text(
                 text = "Nombre: ${miViewModel.getString()}",
                 fontSize = 20.sp
             )
         }
-
     }
 }
 
@@ -234,29 +241,3 @@ fun GreetingPreview() {
         IU(miViewModel = MyViewModel())
     }
 }
-
-/*
-*De un anterior examen
-@Composable
-fun InterfazUsuario() {
-    login()
-    texto_descriptivo("Hola texto")
-    chat()
-}
-
-@Composable
-fun chat() {
-    TODO("Not yet implemented")
-}
-
-@Composable
-fun texto_descriptivo(texto: String) {
-    Text(text = texto)
-}
-
-@Composable
-fun login() {
-    texto_descriptivo(texto = "Fallo de login")
-}
-
-*/
