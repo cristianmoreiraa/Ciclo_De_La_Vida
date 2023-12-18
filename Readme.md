@@ -46,3 +46,22 @@ El juego se inicia en el estado `START` y transita entre estos estados en respue
     CHECKING --> FINISH: Verificar secuencia del usuario
     FINISH --> [*]: Fin
 ```
+
+### Diagrama de flujo
+
+```mermaid
+graph TD
+
+I[INICIO] --> S[START]
+S --> V(ColoresEnv + Colores)
+V --> Aumentar[Aumentar color]
+Aumentar --> Vis[Visualizar Colores]
+Vis --> W[Wait Colores Pulsados]
+W --> Aumentar2[aumentarColorAEnviar]
+Aumentar2 --> CBoton{Boton enviar pulsado}
+CBoton --> |NO|W
+CBoton --> |SI|E[Enviar datos]
+E --> C{Colores==coloresEnviados}
+C --> |SI|+R[Aumentar Ronda] --> Aumentar
+C --> |NO| P[PERDISTE]
+```
